@@ -11,9 +11,7 @@ export class RecipeListComponent implements OnInit {
   @Output() recipeWasSelected = new EventEmitter<Recipe>();
 
   recipes: Recipe[] = [
-    new Recipe('Chicken Wings', 'Crispy yet succulent', 'https://get.pxhere.com/photo/japanese-food-chicken-wings-chopsticks-deboned' +
-      '-pork-gyoza-dish-cuisine-appetizer-seafood-asian-food-animal-source-foods-meal-side-dish-fried-food-lunch-shrimp-recipe-' +
-      'japanese-cuisine-1418346.jpg'),
+    new Recipe('Chicken Wings', 'Crispy yet succulent', 'https://p1.pxfuel.com/preview/203/967/634/food-cuisine-japanese-food-meat.jpg'),
     new Recipe('Avocado on Toast', 'Healthy alternative', 'https://p0.pxfuel.com/preview/359/525/312/avocado-toast-snack-healthy.jpg'),
     new Recipe('Healthy Breakfast', 'Start your day well', 'https://p0.piqsels.com/preview/540/349/270/bread-breakfast-dish-green.jpg'),
   ];
