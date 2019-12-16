@@ -17,16 +17,15 @@
       <button type="button" class="btn btn-primary btn-toggle">Manage Recipe <span class="caret"></span></button>
       <ul class="dropdown-menu">
         <li><a (click)="onSendToShoppingList()" style="cursor: pointer;">Send to Shopping List</a></li>
-        <li><a href=" #">Edit Recipe</a></li>
-        <li><a href="#">Delete Recipe</a></li>
+        <li><a style="cursor: pointer;" (click)="onEditRecipe()">Edit Recipe</a></li>
+        <li><a style="cursor: pointer;">Delete Recipe</a></li>
       </ul>
     </div>
   </div>
 </div>
-
+<br>
 <div class="row">
   <div class="col-xs-12 description">
-    Description
     <p>{{ recipe.description }}</p>
   </div>
 
