@@ -7,9 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  recipesRequested = true;
-
-  updateNavSelection(recipesSelected: boolean) {
-    this.recipesRequested = recipesSelected;
-  }
 }
