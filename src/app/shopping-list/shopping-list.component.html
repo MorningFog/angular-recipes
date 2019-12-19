@@ -5,7 +5,8 @@
     <hr>
     <p>Created shopping list</p>
     <ul class="list-group">
-      <a style="cursor: pointer" class="list-group-item" *ngFor="let ingredient of ingredients">{{ingredient.name}}
+      <a style="cursor: pointer" class="list-group-item" *ngFor="let ingredient of ingredients; index as i"
+        (click)="onEditItem(i)" >{{ingredient.name}}
         ({{ingredient.amount}})</a>
     </ul>
   </div>
