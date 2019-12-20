@@ -21,11 +21,11 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
       this.shoppingListServivce.ingredientChanged.subscribe((ingredients: Ingredient[]) => { this.ingredients = ingredients; });
   }
 
-  ngOnDestroy(): void {
-    this.idChangeSubscrption.unsubscribe();
+  onEditItem(index: number) {
+    this.shoppingListServivce.ingredientEdited.next(index);
   }
 
-  onClearList() {
-    this.ingredients.splice(0, this.ingredients.length);
+  ngOnDestroy(): void {
+    this.idChangeSubscrption.unsubscribe();
   }
 }
