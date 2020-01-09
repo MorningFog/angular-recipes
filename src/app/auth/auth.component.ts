@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from './auth-service';
+import { Observable } from 'rxjs';
+
+import { AuthResponseData } from './auth-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -13,7 +17,7 @@ export class AuthComponent implements OnInit {
   isLoading = false;
   error: string = null;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -26,30 +30,31 @@ export class AuthComponent implements OnInit {
     if (!form.valid) {
       return;
     }
-    this.isLoading = true;
+
     const email = form.value.email;
     const password = form.value.password;
 
-    if (!this.isLoginMode) {
-      this.authService.signUp(email, password)
-        .subscribe(
-          resData => {
-            console.log(resData);
-            this.isLoading = false;
-          },
-          errorResponse => {
-            console.log(errorResponse);
-            let errorMsg = 'An unknown error occurred!';
-            switch (errorResponse.error.error.message) {
-              case 'EMAIL_EXISTS':
-                errorMsg = 'Email/Username already exists';
-            }
-            this.error = errorMsg;
+    let authObservable: Observable<AuthResponseData>;
 
-            this.isLoading = false;
-          }
-        );
+    this.isLoading = true;
+
+    if (!this.isLoginMode) {
+      authObservable = this.authService.signUp(email, password);
+    } else {
+      authObservable = this.authService.login(email, password);
     }
+
+    authObservable.subscribe(
+      resData => {
+        this.isLoading = false;
+        this.router.navigate(['/recipes']);
+      },
+      errorMessage => {
+        this.error = errorMessage;
+        this.isLoading = false;
+      }
+    );
+
     form.reset();
   }
 
