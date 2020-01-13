@@ -1,12 +1,11 @@
 <div class="row">
   <div class="col-md-10">
-    <app-shopping-list-edit (clearListEvent)="onClearList()">
-    </app-shopping-list-edit>
+    <app-shopping-list-edit></app-shopping-list-edit>
     <hr>
     <p>Created shopping list</p>
     <ul class="list-group">
       <a style="cursor: pointer" class="list-group-item" *ngFor="let ingredient of ingredients; index as i"
-        (click)="onEditItem(i)" >{{ingredient.name}}
+        (click)="onEditItem(i)">{{ingredient.name}}
         ({{ingredient.amount}})</a>
     </ul>
   </div>
