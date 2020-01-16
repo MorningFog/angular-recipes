@@ -8,46 +8,55 @@ export const SIGNUP_START = '[Auth] Signup Start';
 export const HANDLE_ERROR = '[Auth] Handle Error';
 export const AUTO_LOGIN = '[Auth] Auto Login';
 
-
 export class AuthenticateSuccess implements Action {
-    readonly type = AUTHENTICATE_SUCCESS;
+  readonly type = AUTHENTICATE_SUCCESS;
 
-    constructor(public payload: {
-        email: string;
-        userId: string;
-        token: string;
-        expirationDate: Date
-    }) { }
+  constructor(
+    public payload: {
+      email: string;
+      userId: string;
+      token: string;
+      expirationDate: Date;
+      redirect: boolean;
+    }
+  ) {}
 }
 
 export class Logout implements Action {
-    readonly type = LOGOUT;
+  readonly type = LOGOUT;
 }
 
 export class LoginStart implements Action {
-    readonly type = LOGIN_START;
+  readonly type = LOGIN_START;
 
-    constructor(public payload: { email: string; password: string }) { }
+  constructor(public payload: { email: string; password: string }) {}
 }
 
 export class AuthenticateFail implements Action {
-    readonly type = AUTHENTICATE_FAIL;
+  readonly type = AUTHENTICATE_FAIL;
 
-    constructor(public payload: string) { }
+  constructor(public payload: string) {}
 }
 
 export class SignupStart implements Action {
-    readonly type = SIGNUP_START;
+  readonly type = SIGNUP_START;
 
-    constructor(public payload: { email: string; password: string }) { }
+  constructor(public payload: { email: string; password: string }) {}
 }
 
 export class AutoLogin implements Action {
-    readonly type = AUTO_LOGIN;
+  readonly type = AUTO_LOGIN;
 }
 
 export class HandleError implements Action {
-    readonly type = HANDLE_ERROR;
+  readonly type = HANDLE_ERROR;
 }
 
-export type AuthActions = LoginStart | Logout | SignupStart | AutoLogin | AuthenticateSuccess | AuthenticateFail | HandleError;
+export type AuthActions =
+  | LoginStart
+  | Logout
+  | SignupStart
+  | AutoLogin
+  | AuthenticateSuccess
+  | AuthenticateFail
+  | HandleError;
